@@ -1,0 +1,57 @@
+{
+  "serverClass": "phature.amaranth.simple.framework.tomcat.TomcatServer",
+  "hostname": "0.0.0.0",
+  "baseDir": "",
+  "contextPath": "develop",
+  "docBase": "static",
+  "secure": true,
+  "connector": {
+    "httpPort": 16384,
+    "httpsPort": 32768,
+    "connectionTimeout": 1000,
+    "maxThreads": 4096,
+    "maxConnections": 32768,
+    "acceptCount": 512,
+    "compressionMinSize": 8192,
+    "compression": "on",
+    "compressibleMimeType": "text/html,text/xml,text/plain,text/css,text/javascript,application/javascript,application/json,application/xml",
+    "keystoreType": "PKCS12",
+    "keystoreFile": "amaranth.phature.name.p12",
+    "keystorePass": "amaranth.phature.name",
+    "keyAlias": "amaranth.phature.name"
+  },
+  "listeners": [
+    "phature.amaranth.simple.framework.web.listener.DefaultServletContextListener",
+    "phature.amaranth.simple.framework.web.listener.DefaultHttpSessionListener",
+    "phature.amaranth.simple.framework.web.listener.DefaultServletRequestListener"
+  ],
+  "filters": [
+    {
+      "name": "phature.amaranth.simple.framework.web.filter.DefaultFilter",
+      "patterns": [
+        "*.servlet"
+      ],
+      "dispatcher": ""
+    }
+  ],
+  "servlets": [
+    {
+      "name": "phature.amaranth.simple.framework.controller.servlet.PublicHttpServlet",
+      "patterns": [
+        "*.public"
+      ]
+    },
+    {
+      "name": "phature.amaranth.simple.framework.controller.servlet.PrivateHttpServlet",
+      "patterns": [
+        "*.private"
+      ]
+    },
+    {
+      "name": "phature.amaranth.simple.framework.web.servlet.DefaultHttpServlet",
+      "patterns": [
+        "*.servlet"
+      ]
+    }
+  ]
+}

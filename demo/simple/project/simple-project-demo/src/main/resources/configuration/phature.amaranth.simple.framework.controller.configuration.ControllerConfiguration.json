@@ -1,0 +1,32 @@
+{
+  "variateClasses": [
+    "phature.amaranth.simple.framework.controller.variate.ErrorVariate"
+  ],
+  "beginTracerClass": "phature.amaranth.simple.framework.controller.tracer.DefaultTracer",
+  "endTracerClass": "phature.amaranth.simple.framework.controller.tracer.DefaultTracer",
+  "securerClass": "phature.amaranth.simple.framework.controller.securer.DefaultSecurer",
+  "encoding": "utf-8",
+  "formatterClasses": {
+    "json": "phature.amaranth.simple.framework.controller.formatter.JsonFormatter"
+  },
+  "publicControllers": {
+    "/database/now.public": {
+      "className": "phature.amaranth.simple.project.demo.controller.DatabaseController",
+      "methodName": "now"
+    },
+    "/default/empty.public": {
+      "className": "phature.amaranth.simple.framework.controller.DefaultController",
+      "methodName": "empty"
+    }
+  },
+  "privateControllers": {
+    "/default/execute.private": {
+      "className": "phature.amaranth.simple.framework.controller.DefaultController",
+      "methodName": "execute"
+    },
+    "/default/error.private": {
+      "className": "phature.amaranth.simple.framework.controller.DefaultController",
+      "methodName": "error"
+    }
+  }
+}

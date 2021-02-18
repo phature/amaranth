@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>amaranth</title>
+    <style type="text/css">code {font-size:12pt}</style>
+</head>
+<body>
+<h1>/database/now.public</h1>
+<code>
+    curl -k http://amaranth.phature.name:8080/database/now.public
+</code>
+<h1>/default.servlet</h1>
+<code>
+    curl -k http://amaranth.phature.name:8080/default.servlet
+</code>
+<h1>/default/empty.public</h1>
+<code>
+    curl -k http://amaranth.phature.name:8080/default/empty.public
+</code>
+<h1>/default/execute.private</h1>
+<code>
+    curl -k http://amaranth.phature.name:8080/default/execute.private?value=1900-01-01%2012:34:56.789 \<br>
+    -P POST -d '"JSON type java.util.String parameter from body."'
+</code>
+<h1>/default/error.private</h1>
+<code>
+    curl -k http://amaranth.phature.name:8080/default/error.private
+</code>
+</body>
+</html>

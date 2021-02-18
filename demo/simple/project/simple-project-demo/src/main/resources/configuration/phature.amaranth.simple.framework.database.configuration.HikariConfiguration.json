@@ -1,0 +1,10 @@
+{
+  "hikariInstances": {
+    "default": {
+      "jdbcUrl": "jdbc:oracle:thin:@oracle12c.phature.name:16021:DEVELOP",
+      "username": "A_DEFAULT",
+      "password": "Fedora.33",
+      "driverClassName": "oracle.jdbc.driver.OracleDriver"
+    }
+  }
+}
