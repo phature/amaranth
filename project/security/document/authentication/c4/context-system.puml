@@ -1,0 +1,16 @@
+@startuml context-system
+!include ../../library/c4/C4_Context.puml
+
+LAYOUT_WITH_LEGEND()
+
+Person(client, "客户端", "浏览器、移动应用、应用系统、第三方应用系统等。")
+
+System(authentication, "认证管理系统", "用户、账号、会话管理等")
+System(application, "应用系统", "令牌管理、业务处理等")
+
+Rel(client, authentication, "签入、签出")
+Rel(client, application, "使用")
+Rel(application, authentication, "注册")
+Rel(authentication, application, "获取访问令牌")
+
+@enduml

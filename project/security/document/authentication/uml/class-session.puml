@@ -1,0 +1,72 @@
+@startuml class-session
+
+class SignatureToken {
+    - String token
+    - String signature
+}
+
+class Token {
+    - String id
+    - String authority
+    - Long time
+    - Integer duration
+    - String publicCipher
+    - String privateCipher
+    - TokenType type
+    - Session session
+}
+
+SignatureToken *-- Token
+
+class Secret {
+    - String authority
+    - Long begin
+    - Long end
+    - String value
+    - AlgorithmType algorithmType
+}
+
+enum AlgorithmType {
+    - String id
+    - String name
+}
+
+
+Secret *-- AlgorithmType
+SignatureToken *-- Secret
+
+enum TokenType {
+    - String id
+    - String name
+}
+
+Token *-- TokenType
+
+class Session {
+    - String id
+    - String portal
+    - User user
+}
+
+Token *-- Session
+
+class JumpToken {
+    - String type = "J"
+}
+
+class AccessToken {
+    - String type = "A"
+}
+
+Token <|-- JumpToken
+Token <|-- AccessToken
+
+class TokenBlacklist {
+    - String token
+    - TokenType type
+    - Long time
+}
+
+Token *-- TokenBlacklist
+
+@enduml
