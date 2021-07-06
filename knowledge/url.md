@@ -16,6 +16,12 @@
 
 [JAVA](https://docs.oracle.com/en/java/javase/11/)
 
+[Vue.js](https://v3.cn.vuejs.org/)
+
+[Element Plus](https://element-plus.gitee.io/#/zh-CN)
+
+[axios](https://github.com/axios/axios)
+
 [阿里开源](https://opensource.alibaba.com/)
 
 ## 安全
