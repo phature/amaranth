@@ -63,3 +63,7 @@
 [网络](./develop/network.md)
 
 ## 测试
+
+## 其他
+
+[通用规范汉字表[2013]](./other/chinese-character-table-of-general-specification-2013.pdf)
