@@ -22,7 +22,7 @@ kataGo有CPU版、AVX2指令的CPU版、CUDA版和OpenCL版。
 katago-rule
 /minor/application/develop/go/katago-avx2/katago
 gtp -model /application/go/neuralnets/model.bin.gz -config /application/go/katago-avx2/rule_gtp.cfg
-time_settings 0 6 1
+time_settings 0 60 1
 ```
 
 引擎名称。
