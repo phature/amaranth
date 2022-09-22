@@ -10,6 +10,8 @@
 
 ## 虚拟机
 
+[Hyper-V](./virtual-machine/hyper-v.md)
+
 [QEMU/KVM](./virtual-machine/kvm.md)
 
 ## 操作系统
