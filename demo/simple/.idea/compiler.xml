@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="simple-framework-controller" />
+        <module name="simple-framework-web" />
+        <module name="simple-framework-configuration" />
+        <module name="simple-application-embed" />
+        <module name="simple-project-demo" />
+        <module name="simple-framework-utility" />
+        <module name="simple-framework-ioc" />
+        <module name="simple-application-war" />
+        <module name="simple-framework-tomcat" />
+        <module name="simple-framework-database" />
+      </profile>
+    </annotationProcessing>
+  </component>
+</project>

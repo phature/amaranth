@@ -1,7 +1,0 @@
-{
-  "classNames": [
-    "phature.amaranth.simple.framework.database.configurator.HikariJsonFileConfigurator",
-    "phature.amaranth.simple.framework.controller.configurator.ControllerJsonFileConfigurator",
-    "phature.amaranth.simple.framework.ioc.configurator.IocJsonFileConfigurator"
-  ]
-}

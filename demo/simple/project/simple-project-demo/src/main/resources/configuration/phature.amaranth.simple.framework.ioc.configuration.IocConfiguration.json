@@ -1,5 +1,0 @@
-{
-  "defaultInstances": {
-    "phature.amaranth.simple.project.demo.storage.DatabaseStorage": "phature.amaranth.simple.project.demo.storage.OracleStorage"
-  }
-}
