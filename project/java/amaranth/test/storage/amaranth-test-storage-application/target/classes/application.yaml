@@ -1,7 +1,0 @@
-server:
-  port: 10080
-spring:
-  application:
-    name: amaranth-test-storage
-  profiles:
-    include: amaranth-architecture-configuration
