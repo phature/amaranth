@@ -57,6 +57,8 @@ sudo systemctl disable firewalld.service
 
 ## DNF
 
+## /etc/fstab
+
 ## Network
 
 ``` shell
@@ -72,7 +74,7 @@ v4.method manual ipv4.addresses 192.168.122.109/24 ipv4.gateway 192.168.122.1 ip
 ``` shell
 mkdir ~/.ssh
 echo "" >> ~/.bashrc && echo "alias sudo='sudo '" >> ~/.bashrc
-useradd --gid `id -g` --uid 1024 guest
+useradd --gid `id -g` --uid 1024 --groups wheel guest
 sudo passwd guest
 ```
 
