@@ -57,6 +57,10 @@ sudo systemctl disable firewalld.service
 
 ## DNF
 
+``` shell
+sudo dnf install -y tar zip unzip curl wget telnet nfs-utils tree
+```
+
 ## /etc/fstab
 
 ## Network
