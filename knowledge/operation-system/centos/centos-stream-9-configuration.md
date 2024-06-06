@@ -8,11 +8,20 @@
 
 [2023 OpenCloudOS 9](https://docs.opencloudos.org/release/oc_intro/)
 
-[2023 OpenCloudOS 10](https://docs.opencloudos.org/release/oc_intro/)
+[2027 OpenCloudOS 10](https://docs.opencloudos.org/release/oc_intro/)
 
 ## OpenEuler
 
 [2024.06.06 openEuler 24.03 LTS](https://gitee.com/openeuler/release-management/blob/master/openEuler-24.03-LTS/release-plan.md)
+
+## USER
+
+``` shell
+mkdir ~/.ssh
+echo "" >> ~/.bashrc && echo "alias sudo='sudo '" >> ~/.bashrc && source ~/.bashrc
+sudo useradd --gid `id -g` --uid 1024 --groups wheel guest
+sudo passwd guest
+```
 
 ## GRUB
 
@@ -63,23 +72,17 @@ sudo dnf install -y tar zip unzip curl wget telnet nfs-utils tree
 
 ## /etc/fstab
 
+``` text
+/dev/mapper/singleton-datum /singleton/datum xfs noauto,defaults 0 0
+/dev/mapper/mirror-datum    /mirror/datum    xfs noauto,defaults 0 0
+```
+
 ## Network
 
 ``` shell
-echo "" | sudo tee -a /etc/hosts && echo 191.168.122.109 $HOSTNAME | tee -a /etc/hosts
-sudo nmcli connection delete eth0 && sudo nmcli connection add con-name eth0 ifname eth0 type ethernet ipv6.method ignore ip
-v4.method auto ipv4.route-metric 0
-sudo nmcli connection delete eth1 && sudo nmcli connection add con-name eth1 ifname eth1 type ethernet ipv6.method ignore ip
-v4.method manual ipv4.addresses 192.168.122.109/24 ipv4.gateway 192.168.122.1 ipv4.route-metric 128
-```
-
-## USER
-
-``` shell
-mkdir ~/.ssh
-echo "" >> ~/.bashrc && echo "alias sudo='sudo '" >> ~/.bashrc
-useradd --gid `id -g` --uid 1024 --groups wheel guest
-sudo passwd guest
+echo "" | sudo tee -a /etc/hosts && echo 191.168.122.109 $HOSTNAME | sudo tee -a /etc/hosts
+sudo nmcli connection delete eth0 && sudo nmcli connection add con-name eth0 ifname eth0 type ethernet ipv6.method ignore ipv4.method auto ipv4.route-metric 0
+sudo nmcli connection delete eth1 && sudo nmcli connection add con-name eth1 ifname eth1 type ethernet ipv6.method ignore ipv4.method manual ipv4.addresses 192.168.122.109/24 ipv4.gateway 192.168.122.1 ipv4.route-metric 128
 ```
 
 ## SCRIPT
