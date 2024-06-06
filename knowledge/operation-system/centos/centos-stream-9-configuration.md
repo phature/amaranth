@@ -89,7 +89,8 @@ sudo nmcli connection delete eth1 && sudo nmcli connection add con-name eth1 ifn
 
 change_file_system.sh
 
-``` text
+``` shell
+cat > change_file_system.sh << EOF
 #!/bin/bash
 
 sudo rm -Rf /etc/lvm/
@@ -105,11 +106,13 @@ do
 done
 
 sudo systemctl daemon-reload
+EOF
 ```
 
 change_host_name.sh
 
-``` text
+``` shell
+cat > change_host_name.sh << EOF
 #!/bin/bash
 
 TARGET_HOSTNAME=$1
@@ -133,11 +136,13 @@ if [[ "$TARGET_HOSTNAME" =~ ^[a-z|0-9|-]*-[0-9]{1,3}$ ]] ; then
 else
   echo "HOSTNAME=^[a-z|0-9|-]*-[0-9]{1,3}$"
 fi
+EOF
 ```
 
 change_ip_segment.sh
 
-``` text
+``` shell
+cat > change_ip_segment.sh << EOF
 #!/bin/bash
 
 TARGET_SEGMENT=$1
@@ -158,19 +163,23 @@ if [[ "$TARGET_SEGMENT" =~ ^[0-9]{1,3}$ ]] ; then
 else
   echo "SEGMENT=^[0-9]{1,3}$"
 fi
+EOF
 ```
 
-mount-nfs-192.168.122.200-mirror-datum-mnt.sh
+mount_nfs_192_168_122_200_mirror_datum_mnt.sh
 
-``` text
+``` shell
+cat > mount_nfs_192_168_122_200_mirror_datum_mnt.sh << EOF
 #!/bin/bash
 
 sudo mount -t nfs 192.168.122.200:/mirror/datum/nfs /mnt
+EOF
 ```
 
 rename_administrator.sh
 
-``` text
+``` shell
+cat > rename_administrator.sh << EOF
 #!/bin/bash
 
 NEW_USERNAME=$1
@@ -181,4 +190,12 @@ if [[ ! -z "${NEW_USERNAME}" ]] ; then
 else
         echo "require new username."
 fi
+EOF
+```
+
+``` shell
+chmod 755 *.sh
+sudo mkdir /home/guest/script
+sudo cp *.sh /home/guest/script/
+sudo chow guest:administrator /home/guest/script/ -R
 ```
