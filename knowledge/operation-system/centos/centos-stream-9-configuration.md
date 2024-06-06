@@ -18,8 +18,17 @@
 
 ``` shell
 mkdir ~/.ssh
+```
+
+``` shell
 echo "" >> ~/.bashrc && echo "alias sudo='sudo '" >> ~/.bashrc && source ~/.bashrc
+```
+
+``` shell
 sudo useradd --gid `id -g` --uid 1024 --groups wheel guest
+```
+
+``` shell
 sudo passwd guest
 ```
 
@@ -27,9 +36,17 @@ sudo passwd guest
 
 ``` shell
 sudo sed -i s/GRUB_TIMEOUT=5/GRUB_TIMEOUT=1/g /etc/default/grub
-sudo sed -i s/GRUB_DEFAULT=saved/GRUB_DEFAULT=0/g /etc/default/grub
-sudo sed -i s/GRUB_CMDLINE_LINUX=\"/GRUB_CMDLINE_LINUX=\"video=2560x1440\ /g /etc/default/grub
+```
 
+``` shell
+sudo sed -i s/GRUB_DEFAULT=saved/GRUB_DEFAULT=0/g /etc/default/grub
+```
+
+``` shell
+sudo sed -i s/GRUB_CMDLINE_LINUX=\"/GRUB_CMDLINE_LINUX=\"video=2560x1440\ /g /etc/default/grub
+```
+
+``` shell
 sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 ```
 
@@ -55,6 +72,9 @@ sudo sed -i s/SELINUX=enforcing/SELINUX=disabled/g /etc/selinux/config
 
 ``` shell
 sudo sed -i "s/Defaults    env_reset/Defaults    env_reset,timestamp_timeout=-1/g" /etc/sudoers
+```
+
+``` shell
 sudo sed -i s/dcredit=-1/dcredit=0/g /etc/pam.d/system-auth
 ```
 
@@ -72,25 +92,38 @@ sudo dnf install -y tar zip unzip curl wget telnet nfs-utils tree
 
 ## /etc/fstab
 
-``` text
-/dev/mapper/singleton-datum /singleton/datum xfs noauto,defaults 0 0
-/dev/mapper/mirror-datum    /mirror/datum    xfs noauto,defaults 0 0
+``` shell
+echo "" | sudo tee -a /etc/fstab
+```
+
+``` shell
+echo "/dev/mapper/singleton-datum /singleton/datum xfs noauto,defaults 0 0" | sudo tee -a /etc/fstab
+```
+
+``` shell
+echo "/dev/mapper/mirror-datum    /mirror/datum    xfs noauto,defaults 0 0" | sudo tee -a /etc/fstab
 ```
 
 ## Network
 
 ``` shell
-echo "" | sudo tee -a /etc/hosts && echo 191.168.122.109 $HOSTNAME | sudo tee -a /etc/hosts
+echo "" | sudo tee -a /etc/hosts && echo 192.168.122.109 $HOSTNAME | sudo tee -a /etc/hosts
+```
+
+``` shell
 sudo nmcli connection delete eth0 && sudo nmcli connection add con-name eth0 ifname eth0 type ethernet ipv6.method ignore ipv4.method auto ipv4.route-metric 0
+```
+
+``` shell
 sudo nmcli connection delete eth1 && sudo nmcli connection add con-name eth1 ifname eth1 type ethernet ipv6.method ignore ipv4.method manual ipv4.addresses 192.168.122.109/24 ipv4.gateway 192.168.122.1 ipv4.route-metric 128
 ```
 
 ## SCRIPT
 
-change_file_system.sh
+### change_file_system.sh
 
 ``` shell
-cat > change_file_system.sh << EOF
+cat > change_file_system.sh << "EOF"
 #!/bin/bash
 
 sudo rm -Rf /etc/lvm/
@@ -109,10 +142,10 @@ sudo systemctl daemon-reload
 EOF
 ```
 
-change_host_name.sh
+### change_host_name.sh
 
 ``` shell
-cat > change_host_name.sh << EOF
+cat > change_host_name.sh << "EOF"
 #!/bin/bash
 
 TARGET_HOSTNAME=$1
@@ -139,10 +172,10 @@ fi
 EOF
 ```
 
-change_ip_segment.sh
+### change_ip_segment.sh
 
 ``` shell
-cat > change_ip_segment.sh << EOF
+cat > change_ip_segment.sh << "EOF"
 #!/bin/bash
 
 TARGET_SEGMENT=$1
@@ -166,20 +199,20 @@ fi
 EOF
 ```
 
-mount_nfs_192_168_122_200_mirror_datum_mnt.sh
+### mount_nfs_192_168_122_200_mirror_datum_mnt.sh
 
 ``` shell
-cat > mount_nfs_192_168_122_200_mirror_datum_mnt.sh << EOF
+cat > mount_nfs_192_168_122_200_mirror_datum_mnt.sh << "EOF"
 #!/bin/bash
 
 sudo mount -t nfs 192.168.122.200:/mirror/datum/nfs /mnt
 EOF
 ```
 
-rename_administrator.sh
+### rename_administrator.sh
 
 ``` shell
-cat > rename_administrator.sh << EOF
+cat > rename_administrator.sh << "EOF"
 #!/bin/bash
 
 NEW_USERNAME=$1
@@ -195,7 +228,16 @@ EOF
 
 ``` shell
 chmod 755 *.sh
+```
+
+``` shell
 sudo mkdir /home/guest/script
+```
+
+``` shell
 sudo cp *.sh /home/guest/script/
-sudo chow guest:administrator /home/guest/script/ -R
+```
+
+``` shell
+sudo chown -R guest:administrator /home/guest/script/
 ```
